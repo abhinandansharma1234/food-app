@@ -18,17 +18,25 @@ const FoodCart = () => {
     <div className="container mt-4">
       <div className="row">
         {filteredItems.map((item) => (
-          <div className="col-md-4 mb-4" key={item.id}>
+          <div className="col-12 col-sm-6 col-md-4 mb-4" key={item.id}>
             <div className="card food-card h-100 border-0 shadow-sm">
               <img
                 src={item.image}
                 className="card-img-top food-img"
                 alt={item.name}
+                style={{
+                  height: "200px",
+                  objectFit: "cover",
+                  borderTopLeftRadius: "0.5rem",
+                  borderTopRightRadius: "0.5rem",
+                }}
               />
 
               <div className="card-body d-flex flex-column justify-content-between p-3">
                 <div>
-                  <h6 className="card-title fw-bold mb-2">{item.name}</h6>
+                  <h6 className="card-title fw-bold mb-2 text-truncate">
+                    {item.name}
+                  </h6>
                   <p className="card-text mb-1">
                     <strong>Rating:</strong> ⭐ {item.rating}
                   </p>
@@ -39,13 +47,15 @@ const FoodCart = () => {
                     <strong>Ingredients:</strong>
                     <ul className="mb-0 ps-3">
                       {item.ingredients.slice(0, 4).map((ing, index) => (
-                        <li key={index}>{ing}</li>
+                        <li key={index} style={{ fontSize: "0.9rem" }}>
+                          {ing}
+                        </li>
                       ))}
                     </ul>
                   </div>
                 </div>
                 <button
-                  className="btn btn-sm add-btn mt-3 w-100"
+                  className="btn btn-sm btn-primary mt-3 w-100"
                   onClick={() => handleAddToCart(item)}
                 >
                   Add to Cart

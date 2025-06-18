@@ -1,4 +1,3 @@
-// src/pages/Cart.jsx
 import { useSelector, useDispatch } from "react-redux";
 import { cartActions } from "../store/cartSlice";
 
@@ -12,10 +11,10 @@ const Cart = () => {
 
   if (cartItems.length === 0) {
     return (
-      <div className="cart-page d-flex justify-content-center align-items-center">
-        <div className="empty-cart text-center p-4 shadow-sm">
+      <div className="cart-page d-flex justify-content-center align-items-center py-5">
+        <div className="empty-cart text-center p-4 shadow-sm bg-light rounded">
           <h4 className="text-muted">🛒 Your cart is empty</h4>
-          <p>Start adding some delicious items!</p>
+          <p className="mb-0">Start adding some delicious items!</p>
         </div>
       </div>
     );
@@ -26,7 +25,7 @@ const Cart = () => {
       <h4 className="mb-4 fw-bold">🧺 Your Cart</h4>
       <div className="row">
         {cartItems.map((item) => (
-          <div className="col-md-4 mb-4" key={item.id}>
+          <div className="col-12 col-sm-6 col-md-4 mb-4" key={item.id}>
             <div className="card h-100 cart-card shadow-sm">
               <img
                 src={item.image}
@@ -48,7 +47,7 @@ const Cart = () => {
                   </ul>
                 </div>
                 <button
-                  className="btn btn-outline-danger rounded-pill mt-2 transition-btn"
+                  className="btn btn-outline-danger rounded-pill mt-3 transition-btn w-100"
                   onClick={() => handleRemove(item.id)}
                 >
                   Remove ❌

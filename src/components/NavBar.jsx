@@ -1,10 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { foodActions } from "../store/foodSlice";
+import { useState } from "react";
 
 const NavBar = () => {
   const dispatch = useDispatch();
-  const location = useLocation(); // Get the current route
+  const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleSearch = (e) => {
     dispatch(foodActions.setSearchTerm(e.target.value));
@@ -14,25 +16,34 @@ const NavBar = () => {
   const cartCount = cartItems.length;
 
   return (
-    <nav className="navbar navbar-expand-lg custom-navbar px-4">
+    <nav className="navbar navbar-expand-lg custom-navbar px-3 py-2 shadow-sm">
       <div className="container-fluid">
         <Link to="/" className="navbar-brand brand-animated fw-bold">
           🍅 Tomato
         </Link>
 
-        <div
-          className="collapse navbar-collapse justify-content-end"
-          id="navbarSupportedContent"
+        {/* Hamburger Toggle Button */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          onClick={() => setIsOpen(!isOpen)}
         >
-          {/* ✅ Only show search input if not on cart page */}
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          className={`collapse navbar-collapse justify-content-end ${
+            isOpen ? "show" : ""
+          }`}
+        >
           {location.pathname !== "/cart" && (
             <form
-              className="d-flex me-3"
+              className="d-flex me-3 mt-2 mt-lg-0"
               role="search"
               onSubmit={(e) => e.preventDefault()}
             >
               <input
-                className="form-control search-input me-2"
+                className="form-control me-2"
                 type="search"
                 placeholder="Search food..."
                 aria-label="Search"

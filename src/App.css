@@ -1,4 +1,4 @@
-
+/* Food Card Styles */
 .food-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 12px;
@@ -15,8 +15,10 @@
   object-fit: cover;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+  width: 100%;
 }
 
+/* Add to Cart Button */
 .add-btn {
   background: linear-gradient(to right, #ff7e5f, #feb47b);
   color: white;
@@ -30,16 +32,17 @@
   background: linear-gradient(to right, #ff6a5b, #fea765);
 }
 
+/* Ingredients List */
 .ingredients-list {
   font-size: 0.85rem;
   max-height: 60px;
   overflow-y: auto;
 }
 
+/* Navbar */
 .custom-navbar {
   background: linear-gradient(to right, #ffecd2, #fcb69f);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: background 0.3s ease;
 }
 
 .brand-animated {
@@ -66,6 +69,7 @@
   border-color: #ff5e57;
 }
 
+/* Cart Badge */
 .cart-badge {
   position: absolute;
   top: -8px;
@@ -79,6 +83,7 @@
   100% { transform: scale(1); }
 }
 
+/* Cart Page */
 .cart-page {
   min-height: 100vh;
   background: linear-gradient(to right, #fff1eb, #ace0f9);
@@ -112,6 +117,7 @@
   min-width: 300px;
 }
 
+/* General Card Style */
 .card {
   background-color: #fff;
   border-radius: 15px;
@@ -121,4 +127,57 @@
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Icons */
+footer .text-body-secondary {
+  color: #555 !important;
+}
+
+/* 📱 Responsive Styles */
+@media (max-width: 768px) {
+  .food-img {
+    height: 150px;
+  }
+
+  .search-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .navbar .navbar-collapse {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar .nav-link {
+    padding-left: 0;
+  }
+
+  .brand-animated {
+    font-size: 1.25rem;
+  }
+
+  .cart-page {
+    padding: 20px 10px;
+  }
+
+  .empty-cart {
+    width: 100%;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  footer .col-md-4 {
+    flex: 100%;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  footer .list-unstyled {
+    justify-content: center !important;
+  }
 }
