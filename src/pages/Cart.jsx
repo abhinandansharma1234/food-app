@@ -1,12 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
 import { cartActions } from "../store/cartSlice";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
   const handleRemove = (id) => {
+    const removedItem = cartItems.find((item) => item.id === id);
     dispatch(cartActions.removeFromCart(id));
+    toast.info(`${removedItem?.name} removed from cart.`);
   };
 
   if (cartItems.length === 0) {

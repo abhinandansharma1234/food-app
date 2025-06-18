@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../store/cartSlice";
+import { toast } from "react-toastify";
 
 const FoodCart = () => {
   const dispatch = useDispatch();
@@ -12,8 +13,8 @@ const FoodCart = () => {
 
   const handleAddToCart = (item) => {
     dispatch(cartActions.addToCart(item));
+    toast.success(`${item.name} added to cart!`);
   };
-
   return (
     <div className="container mt-4">
       <div className="row">
